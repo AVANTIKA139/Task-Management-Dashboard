@@ -1,13 +1,33 @@
 import React, { useState } from "react";
 
 const TaskManagement = () => {
+  const [tasks, settasks] = useState([]);
   const [title, settitle] = useState("");
   const [description, setdescription] = useState("");
   const [duedate, setduedate] = useState(new Date());
+
   const createTask = () => {
-    console.log(title);
-    console.log(description);
-    console.log(duedate);
+    const newTask = {
+      taskname: title,
+      taskdescription: description,
+      taskduedate: duedate,
+      taskstatus: "TO-DO",
+    };
+    const oldTasks = [...tasks];
+    oldTasks.push(newTask);
+    settasks(oldTasks);
+  };
+  const handlestarttask = (index) => {
+    let oldtask = [...tasks];
+    oldtask[index].taskstatus = "ON-GOING";
+    settasks(oldtask);
+  };
+
+  const handledeletetask = (index) => {
+    let oldtask = [...tasks];
+    let newTask = oldtask.filter((v, i) => i !== index);
+
+    settasks(newTask);
   };
 
   return (
@@ -28,8 +48,8 @@ const TaskManagement = () => {
           padding: "15px",
           borderImage: "url(border.png) 30 stretch",
           backgroundSize: "cover",
-          height: "100%",
-          borderRadius: "5%",
+          height: "100vh",
+
           position: "relative",
         }}
       >
@@ -93,6 +113,22 @@ const TaskManagement = () => {
         onClick={() => createTask()}
       >
         Create Task
+      </button>
+      {tasks.map((v, i) => {
+        return (
+          <div key={i}>
+            <p>Task Name :{v.taskname}</p>
+            <p>Task Description:{v.taskdescription}</p>
+            <p>Task Due Date : {v.taskduedate}</p>
+            <p>Task Status: {v.taskstatus}</p>
+          </div>
+        );
+      })}
+      <button onClick={() => handlestarttask()} type="button">
+        Start Task
+      </button>
+      <button onClick={() => handledeletetask()} type="button">
+        Delete Task{""}
       </button>
     </>
   );
