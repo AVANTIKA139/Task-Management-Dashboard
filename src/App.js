@@ -1,10 +1,13 @@
 import React from "react";
-import TaskManagement from "./Components/TaskManagement";
+// import Task from "./Components/Task";
+import Thedatabase from "./Components/Thedatabase";
 
 function App() {
   return (
     <>
-      <TaskManagement />
+      {/* <TaskManagement /> */}
+      {/* <Task /> */}
+      <Thedatabase />
     </>
   );
 }
