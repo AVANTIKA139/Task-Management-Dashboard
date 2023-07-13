@@ -31,6 +31,11 @@ const Thedatabase = () => {
     olddatabase.push(Updatabase);
     setdatabase(olddatabase);
   };
+  const deleterecord = (c) => {
+    let olddatabase = [...database];
+    const Updatabase = olddatabase.filter((v, i) => i !== c);
+    setdatabase(Updatabase);
+  };
 
   return (
     <>
@@ -173,7 +178,7 @@ const Thedatabase = () => {
           </tr>
         </table>
         <button
-          onClick={() => submitData}
+          onClick={() => submitData()}
           class="Submit"
           style={{ backgroundColor: "cornsilk" }}
         >
@@ -182,13 +187,15 @@ const Thedatabase = () => {
       </div>
       {database.map((v, i) => {
         return (
-          <div>
-            <h3>database</h3>
+          <div style={{ backgroundColor: "darkgray", color: "darkblue" }}>
+            <h3>Record</h3>
             <ul>
               <li>Name: {v.studentname}</li>
-              <li>Roll No: {v.Rollnumber}</li>M
-              <li>MotherName: {v.Mothername}</li>
-              <li>FatherName: {v.Fathername}</li>
+              <li>Roll No: {v.Rollnumber}</li>
+              <li>Mother's Name: {v.Mothername}</li>
+              <li>Father's Name: {v.Fathername}</li>
+              <br></br>
+
               <li>BSM-101: {v.Marks1}</li>
               <li>BEE-101: {v.Marks2}</li>
               <li>BHM-101: {v.Marks3}</li>
@@ -196,6 +203,16 @@ const Thedatabase = () => {
               <li>BSM-142: {v.Marks5}</li>
               <li>BSM-127: {v.Marks6}</li>
             </ul>
+            <button
+              style={{
+                backgroundColor: "greenyellow",
+                color: "darkolivegreen",
+              }}
+              onClick={() => deleterecord(i)}
+              type="button"
+            >
+              Delete
+            </button>
           </div>
         );
       })}

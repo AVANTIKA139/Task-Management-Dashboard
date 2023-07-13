@@ -1,13 +1,13 @@
 import React from "react";
-// import Task from "./Components/Task";
-import Thedatabase from "./Components/Thedatabase";
+import Task from "./Components/Task";
+// import Thedatabase from "./Components/Thedatabase";
 
 function App() {
   return (
     <>
       {/* <TaskManagement /> */}
-      {/* <Task /> */}
-      <Thedatabase />
+      <Task />
+      {/* <Thedatabase /> */}
     </>
   );
 }

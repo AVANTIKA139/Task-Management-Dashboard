@@ -16,6 +16,7 @@ const Task = () => {
     oldtask.push(Uptask);
     settask(oldtask);
   };
+
   const updatedtask = (c) => {
     const oldtask = [...newtask];
     oldtask[c].taskstatus = "In Progress";
@@ -45,7 +46,7 @@ const Task = () => {
           border: "10px solid transparent",
           padding: "15px",
           borderImage: "url(border.png) 30 stretch",
-          backgroundSize: "cover", 
+          backgroundSize: "cover",
           height: "100vh",
 
           position: "relative",
@@ -128,7 +129,7 @@ const Task = () => {
               onClick={() => updatedtask(i)}
               type="button"
             >
-              Start Task
+              Start task
             </button>
           </div>
         );
