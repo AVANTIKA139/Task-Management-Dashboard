@@ -3,7 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Task = () => {
-  const [tasks, setasks] = useState([]);
+  const [tasks, settasks] = useState([]);
   const [taskTitle, setTaskTitle] = useState();
   const [taskDescription, settaskDescription] = useState();
   const [taskDueDate, settaskDueDate] = useState();
@@ -20,7 +20,7 @@ const Task = () => {
     };
     const oldTask = [...tasks];
     oldTask.push(newTask);
-    setasks(oldTask);
+    settasks(oldTask);
     setTaskTitle("");
     settaskDescription("");
   };
@@ -33,12 +33,12 @@ const Task = () => {
     } else if (status === "COMPLETED") {
       oldTask[index].taskstatus = "TO DO";
     }
-    setasks(oldTask);
+    settasks(oldTask);
   };
   const handledeletetask = (index) => {
     let oldTask = [...tasks];
     let updatedTask = oldTask.filter((v, i) => i !== index);
-    setasks(updatedTask);
+    settasks(updatedTask);
   };
   const getButtonName = (status) => {
     if (status === "TO DO") return "START TASK";
