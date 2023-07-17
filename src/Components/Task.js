@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 const Task = () => {
   const [tasks, settasks] = useState([]);
   const [taskTitle, setTaskTitle] = useState();
   const [taskDescription, settaskDescription] = useState();
   const [taskDueDate, settaskDueDate] = useState();
-  const createTask = () => {
-    if (taskTitle === "") return toast.warning("Please provide task title");
-    else if (taskDescription === "")
+  const createTask = async () => {
+    if (taskTitle.trim() === "")
+      return toast.warning("Please provide task title");
+    else if (taskDescription.trim() === "")
       return toast.warning("Please enter task description");
     else if (!taskDueDate) return toast.warning("Please provide due date");
     const newTask = {
@@ -23,6 +25,16 @@ const Task = () => {
     settasks(oldTask);
     setTaskTitle("");
     settaskDescription("");
+
+    // code for sending data to backend through api
+    // axios.method(routename,dataorbodyobject)
+    const response = await axios.post("/api/task", {
+      taskTitle: taskTitle,
+      taskDescription: taskDescription,
+      taskDueDate: taskDueDate,
+      taskstatus: "TO DO",
+    });
+    console.log(response);
   };
   const handlechangestatus = (index, status) => {
     let oldTask = [...tasks];
