@@ -35,6 +35,7 @@ const Task = () => {
       taskstatus: "TO DO",
     });
     console.log(response);
+    console.log(response.data);
   };
   const handlechangestatus = (index, status) => {
     let oldTask = [...tasks];
